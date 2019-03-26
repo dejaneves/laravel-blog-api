@@ -125,6 +125,11 @@ Cria um novo post, mas adicionando um novo autor.
 
 Na hora de inserir um novo post o método checa se existe uma *key* chamada **author_id** se ela for encontrada no corpo da requisiçao, o método não checa os outros dados do autor e pega o valor dessa *key* como sendo o próprio autor do post.
 
+## Infra
+
+
+[Infra](./documentation/Infra.png)
+
 ## Tecnologias e Ferramanetas Usadas
 
 * MongoDB
