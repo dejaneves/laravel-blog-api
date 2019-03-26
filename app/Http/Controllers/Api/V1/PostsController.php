@@ -34,7 +34,7 @@ class PostsController extends Controller {
   public function show($id) {
     try {
       $paramId = $id * 1;
-      $this->response["data"] = Posts::with('autor')->where('id',$paramId)->first();
+      $this->response["data"] = Posts::with('autor','comments')->where('id',$paramId)->first();
     } catch (Exception $e) {
       $this->response["error"] = $e->getMessage();
     }
