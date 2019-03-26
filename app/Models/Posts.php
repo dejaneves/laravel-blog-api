@@ -15,8 +15,13 @@ class Posts extends Eloquent {
     '_id'
   );
 
-  public function autor(){
-    return $this->belongsTo('App\Models\Users','userId', 'id');
+  public function author(){
+    return $this->belongsTo('App\Models\Users','userId', 'id')
+      ->select(array('id', 'name', 'username', 'email'));
+  }
+
+  public function comments(){
+    return $this->hasMany('App\Models\Comments','postId', 'id');
   }
 
 }
