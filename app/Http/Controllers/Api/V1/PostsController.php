@@ -16,25 +16,28 @@ class PostsController extends Controller {
   ];
 
   /**
-   * Display a listing of the resource.
+   * List all posts
    *
-   * @return \Illuminate\Http\Response
    */
   public function index() {
-    //
+    try {
+      $this->response["data"] = Posts::with('author','comments')->get();
+    } catch (Exception $e) {
+      $this->response["error"] = $e->getMessage();
+    }
+    return $this->response;
   }
 
   public function __construct() {}
 
   /**
-   * Display the specified resource.
+   * List posts by id
    *
-   * @param  \App\Models\Posts  $posts
    */
   public function show($id) {
     try {
       $paramId = $id * 1;
-      $this->response["data"] = Posts::with('autor','comments')->where('id',$paramId)->first();
+      $this->response["data"] = Posts::with('author','comments')->where('id',$paramId)->first();
     } catch (Exception $e) {
       $this->response["error"] = $e->getMessage();
     }

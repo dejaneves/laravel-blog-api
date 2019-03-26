@@ -15,7 +15,7 @@ class Posts extends Eloquent {
     '_id'
   );
 
-  public function autor(){
+  public function author(){
     return $this->belongsTo('App\Models\Users','userId', 'id')
       ->select(array('id', 'name', 'username', 'email'));
   }
