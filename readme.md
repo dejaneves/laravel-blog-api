@@ -39,7 +39,7 @@ $ composer install
 
 ### Configurando sua base de dados
 
-Vá para o arquivo que se encontra em `config/database.php` na seção `connections` e altera as configurações do **mongodb** de acordo com as configuraçõs locais do seu banco.
+Vá para o arquivo que se encontra em `config/database.php` na seção *connections* e altera as configurações do **mongodb** de acordo com as configuraçõs locais do seu banco.
 
 ```php
 
