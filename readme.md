@@ -63,7 +63,7 @@ Vá para o arquivo que se encontra em `config/database.php` na seção *connecti
 $ php artisan serve
 ```
 
-## Rotas *(end-poinst)*
+## Rotas *(end-points)*
 
 Todas as rotas criadas para o projeto se encontram no diretório `routes/api.php`.
 
@@ -90,6 +90,38 @@ POST:
 http://localhost:8000/api/v1/posts
 ```
 
+Exemplo:
+
+Cria um novo post passando um autor que já existe no banco de dados.
+
+```javascript
+
+{
+  "title": "Lorem ipsum dolor sit amet.",
+  "body": "Quisque at tristique sem. Vestibulum a pellentesque metus.",
+  
+  // ID do autor cadastrado no seu banco de dados
+  "author_id" : 10
+}
+```
+
+Cria um novo post, mas adicionando um novo autor.
+
+```javascript
+
+{
+  "title": "Lorem ipsum dolor sit amet.",
+  "body": "Quisque at tristique sem. Vestibulum a pellentesque metus.",
+
+  "author_name":"Jaime Neves",
+  "author_username":"jaimeneves",
+  "author_email":"jaime@gmail.com",
+  "author_phone":"92 981255658",
+  "author_website":"jaimeneves.com.br"
+}
+```
+
+Na hora de inserir um novo post o método checa se existe uma *key* chamada **author_id** se ela for encontrada no corpo da requisiçao, o método não checa os outros dados do autor e pega o valor dessa *key* como sendo o próprio autor do post.
 
 ## Tecnologias e Ferramanetas Usadas
 
