@@ -127,8 +127,7 @@ Na hora de inserir um novo post o método checa se existe uma *key* chamada **au
 
 ## Infra
 
-
-![Infra-min](https://user-images.githubusercontent.com/6599252/55039825-2c97a780-4ffc-11e9-9bac-c4da9ee93d7d.png)
+![Infra](https://user-images.githubusercontent.com/6599252/55040365-679ada80-4ffe-11e9-99af-d4a50d847546.png)
 
 ## Tecnologias e Ferramanetas Usadas
 
