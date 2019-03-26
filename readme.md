@@ -1,6 +1,6 @@
 # APIs de blog em PHP usando MongoDB
 
-> Esse projeto tem como finalidado:
+> Esse projeto tem como finalidade as seguintes ações:
 
 1. Exibir uma lista de posts, autores e seus comentários.
 2. Exibir um único post sendo identificado pelo seu ID, autor e os comentários do post.
@@ -26,10 +26,15 @@ $ git clone https://github.com/dejaneves/api-blog-php.git
 
 ### Instalando as Dependêcias
 
-Após baixar o projeto entra na pasta `api-blog-php` e execute o sequinte comando.
+Após baixar o projeto entre na pasta `api-blog-php`.
 
 ```bash
-$ cd api-blog-php && composer install
+$ cd api-blog-php
+```
+e execute o sequinte comando, para instalar as dependências.
+
+```bash
+$ composer install
 ```
 
 ### Configurando sua base de dados
