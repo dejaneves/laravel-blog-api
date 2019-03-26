@@ -54,8 +54,9 @@ Vá para o arquivo que se encontra em `config/database.php` na seção *connecti
       'db' => 'admin' // Sets the authentication database required by mongo 3
   ]
 ],
-
 ```
+
+As collections da sua base de dados devem ser: `posts`, `comments` e `users`. Você pode encontrar os dados dentro do diretório `database/data`.
 
 ### Executando o Projeto
 
