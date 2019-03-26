@@ -65,19 +65,21 @@ $ php artisan serve
 
 ## Rotas *(end-poinst)*
 
+Todas as rotas criadas para o projeto se encontram no diretório `routes/api.php`.
+
 #### Exibir todos os posts.
 
 ```http
 GET:
 
-/api/v1/posts
+http://localhost:8000/api/v1/posts
 ```
 
 #### Exibir um post passando como paramentro seu {ID}.
 ```http
 GET:
 
-/api/v1/posts/:id
+http://localhost:8000/api/v1/posts/:id
 ```
 
 #### Criar um novo post.
@@ -85,7 +87,7 @@ GET:
 ```http
 POST:
 
-/api/v1/posts
+http://localhost:8000/api/v1/posts
 ```
 
 
