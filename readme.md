@@ -113,6 +113,7 @@ Cria um novo post, mas adicionando um novo autor.
   "title": "Lorem ipsum dolor sit amet.",
   "body": "Quisque at tristique sem. Vestibulum a pellentesque metus.",
 
+  // Dados do novo autor
   "author_name":"Jaime Neves",
   "author_username":"jaimeneves",
   "author_email":"jaime@gmail.com",
