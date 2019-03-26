@@ -24,6 +24,6 @@ Route::group([
         // Requisited Routes
         Route::get('/posts', 'PostsController@index');
         Route::get('/posts/{id}', 'PostsController@show');
-        // Route::post('/posts', 'Api\V1\PostsController@show');
+        Route::post('/posts', 'PostsController@store');
       
   });
