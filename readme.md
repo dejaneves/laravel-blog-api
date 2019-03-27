@@ -127,7 +127,7 @@ Na hora de inserir um novo post o método checa se existe uma *key* chamada **au
 
 ## Infra
 
-<img src="documentation/infra.png" width="100" height="100">
+<img src="documentation/infra.png">
 
 ## Tecnologias e Ferramanetas Usadas
 
