@@ -133,7 +133,9 @@ Na hora de inserir um novo post o método checa se existe uma *key* chamada **au
 
 Teremos um **Loading Balance** recebendo requisições HTTP e distribuindo as requisições via **NGINX** para um pool escalável de máquinas.
 
-Nossa API pode ser colocada em produção, rodando em 2 máquinas ou mais, como mostrado na figura acima. Quando nosso Loading Balance receber as requisições ele pode buscar em 2 endereços (máquinas), para melhorar a latência e balancear a carga. Nosso trigger para autoscaling será utilização de CPU, que através de ferramentas podemos obter diversas informações dos recursos que estão sendo utilizados, e com isso tomar alguma ação, como por exemplo: Criar  alarmes que serão ativados quando a utilização de CPU chegar em determinado percentual.
+Nossa API pode ser colocada em produção, rodando em 2 máquinas ou mais, como mostrado na figura acima. Quando nosso Loading Balance receber as requisições ele pode buscar em 2 endereços (máquinas), para melhorar a latência e balancear a carga.
+
+Nosso trigger para autoscaling será utilização de CPU, que através de ferramentas podemos obter diversas informações dos recursos que estão sendo utilizados, e com isso tomar alguma ação, como por exemplo: Criar  alarmes que serão ativados quando a utilização de CPU chegar em determinado percentual.
 
 ### Banco de dados
 
