@@ -143,6 +143,38 @@ Nossas APIs se comportando como um microservice, cada uma terá que ter seu pró
 
 Nosso banco de dados também pode ser colocado em uma máquina separada, e fazer sua propria réplica caso seja necessário.
 
+## Boas Práticas de Desenvolvimento
+
+O projeto usa o padrão de arquitetura MVC.
+
+Para todos os Endpoints da API decidir usar o prefix `/api/v1` para fazer seu versionamento.
+
+Por exemplo:
+
+Todos os controllers da API ficam do diretório `Http/Controllers/Api/V1` para todos os controllers que pertencem a versão `v1`.
+
+Se for preciso criar uma outra versão da API sem depreciar em primeiro momento a `v1`, podemos criar todos os controllers em `Http/Controllers/Api/V2` para uma segunda versão, e assim sucessivamente pra outras versões.
+
+### Idioma
+
+O idioma escolhido para o projeto, foi o inglês, pra seguirmos os mesmo padrão de respostas do JSON Place Holder.
+
+
+| Item  | valor |
+| ------------- | ------------- |
+| MongoDB  | Collections e nomes de seus fields  |
+| Codificação  | Classes métodos, atributos e variáveis  |
+| Git  | Mensagens de commits  |
+
+### Codificação
+
+| Item  | valor |
+| ------------- | ------------- |
+| Indentação  | Tamanho 2  |
+| Comprimento Linha  | 100 caracteres  |
+| Número Linha de Arquivo  | 500 linhas  |
+
+Pequenos comentários para identificar o objetivo de uma classe, método ou variável.
 
 ## Tecnologias e Ferramanetas Usadas
 
