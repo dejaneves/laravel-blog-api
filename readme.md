@@ -129,6 +129,12 @@ Na hora de inserir um novo post o método checa se existe uma *key* chamada **au
 
 <img src="documentation/infra.png">
 
+Nossa API pode ser colocada em produção, rodando em 2 máquinas ou mais, como mostrado na figura acima. Quando nosso Loading Balance recebe a requisição tem a capacidade de busca em 2 endereços para melhorar a latência e balancear a carga.
+
+O **Loading Balance** pode usar o NGINX para escrever suas regras de busca nas máquinas.
+
+Nosso banco de dados também pode ser colocado em uma máquina separada, e fazer sua propria réplica caso seja necessário.
+
 ## Tecnologias e Ferramanetas Usadas
 
 * MongoDB
