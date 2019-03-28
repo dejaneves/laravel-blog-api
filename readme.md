@@ -9,23 +9,23 @@
 ## Tabela de Conteúdos
 
 - [APIs de blog em PHP usando MongoDB](#apis-de-blog-em-php-usando-mongodb)
-  * [Pré-requisitos](#pr--requisitos)
-  * [Instalação e Configuração](#instala--o-e-configura--o)
+  * [Pré-requisitos](#pré-requisitos)
+  * [Instalação e Configuração](#instalação-e-configuração)
     + [Clonando o projeto](#clonando-o-projeto)
-    + [Instalando as Dependêcias](#instalando-as-depend-cias)
+    + [Instalando as Dependêcias](#instalando-as-dependêcias)
     + [Configurando sua base de dados](#configurando-sua-base-de-dados)
     + [Executando o Projeto](#executando-o-projeto)
-  * [Rotas *(end-points)*](#rotas---end-points--)
+  * [Rotas *(end-points)*](#rotas-end-points)
     + [Exibir todos os posts.](#exibir-todos-os-posts)
-    + [Exibir um post passando como paramentro seu {ID}.](#exibir-um-post-passando-como-paramentro-seu--id-)
+    + [Exibir um post passando como paramentro seu {ID}.](#exibir-um-post-passando-como-paramentro-seu-id)
     + [Criar um novo post.](#criar-um-novo-post)
-      - [Exemplo:](#exemplo-)
+      - [Exemplo:](#exemplo)
   * [Infra](#infra)
     + [APIs e Loading Balance](#apis-e-loading-balance)
     + [Banco de dados](#banco-de-dados)
-  * [Boas Práticas de Desenvolvimento](#boas-pr-ticas-de-desenvolvimento)
+  * [Boas Práticas de Desenvolvimento](#boas-práticas-de-desenvolvimento)
     + [Idioma](#idioma)
-    + [Codificação](#codifica--o)
+    + [Codificação](#codificação)
   * [Tecnologias e Ferramanetas Usadas](#tecnologias-e-ferramanetas-usadas)
 
 ## Pré-requisitos
@@ -35,7 +35,8 @@ Para executar esse projeto algumas tecnologias precisam já está instalada na s
 * MongoDB
 * Composer
 * PHP 7.2.16
-* Laravel Framework para acesso aos dados no MongoDB
+* Laravel Framework
+  + Para acesso aos dados no MongoDB.
 
 ## Instalação e Configuração
 
