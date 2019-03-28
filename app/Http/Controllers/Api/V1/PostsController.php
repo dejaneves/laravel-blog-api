@@ -10,6 +10,11 @@ use Exception;
 
 use Illuminate\Http\Request;
 
+// Dingo\Api\Exception\DeleteResourceFailedException
+// Dingo\Api\Exception\ResourceException
+use Dingo\Api\Exception\StoreResourceFailedException;
+// Dingo\Api\Exception\UpdateResourceFailedException
+
 class PostsController extends Controller {
 
   private $response = [
@@ -37,12 +42,8 @@ class PostsController extends Controller {
    *
    */
   public function show($id) {
-    try {
-      $paramId = $id * 1;
-      $this->response["data"] = Posts::with('author','comments')->where('id',$paramId)->first();
-    } catch (Exception $e) {
-      $this->response["error"] = $e->getMessage();
-    }
+    $paramId = $id * 1;
+    $this->response["data"] = Posts::with('author','comments')->where('id',$paramId)->firstOrFail();
     return $this->response;
   }
 
@@ -53,44 +54,61 @@ class PostsController extends Controller {
    * @return Response
    */
   public function store(Request $request) {
-    try {
-      $nextId = Posts::max('id') + 1;
-      $posts = new Posts;
-      $serverOptions = new ServerOptions;
+    $rules = [
+      'title' => 'required',
+      'body' => 'required'
+    ];
 
-      if(!$request->title) throw new Exception($serverOptions->CodeError()['INVALID_FIELDS']);
+    $rules2 = [
+      'author_name' => 'required',
+      'author_username' => 'required',
+      'author_email' => 'required'
+    ];
 
-      if(!$request->body) throw new Exception($serverOptions->CodeError()['INVALID_FIELDS']);
+    $payload = app('request')->only('title', 'body');
+    $validator = app('validator')->make($payload, $rules);
 
-      if($request->has('author_id')) {
-        $authorId = floatval($request->author_id);
-        $users = Users::where('id', $authorId)->first();
-        if($users) {
-          $posts->userId = $users->id;
-        }
+    if ($validator->fails()) {
+      throw new StoreResourceFailedException('Could not create new post.', $validator->errors());
+    }
+
+    $nextId = Posts::max('id') + 1;
+    $posts = new Posts;
+
+    if($request->has('author_id')) {
+      $authorId = floatval($request->author_id);
+      $users = Users::where('id', $authorId)->first();
+      if($users) {
+        $posts->userId = $users->id;
       } else {
-        $resCreateAutor = $this->createAuthor($this->prepateAuthor($request));
-        if($resCreateAutor['success']) {
-          $posts->userId = $resCreateAutor['last_insert_id'];
-        }
+        return $this->response->errorNotFound('Could not find the user.');
+      }
+    } else {
+      $payloadAuthor = app('request')->only('author_name','author_username', 'author_email');
+      $validator2 = app('validator')->make($payloadAuthor, $rules2);
+
+      if ($validator2->fails()) {
+        throw new StoreResourceFailedException('Could not create new post.', $validator2->errors());
       }
 
-      $posts->id = $nextId;
-      $posts->title = $request->title;
-      $posts->body = $request->body;
-      
-      $success = $posts->save();
-
-      $result = array(
-        'success' => $success,
-        'last_insert_id' => $posts->id,
-      );
-    
-      $this->response['data'] = $result;
-    } catch (\Exception $e) {
-      $error = (object) array('code' => $e->getMessage() * 1);
-      $this->response['error'] = $error;
+      $resCreateAutor = $this->createAuthor($this->prepateAuthor($request));
+      if($resCreateAutor['success']) {
+        $posts->userId = $resCreateAutor['last_insert_id'];
+      }
     }
+
+    $posts->id = $nextId;
+    $posts->title = $request->title;
+    $posts->body = $request->body;
+    
+    $success = $posts->save();
+
+    $result = array(
+      'success' => $success,
+      'last_insert_id' => $posts->id,
+    );
+  
+    $this->response['data'] = $result;
     return $this->response;
   }
 

@@ -13,17 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+$api = app('Dingo\Api\Routing\Router');
 
-Route::group([
+$api->version('v1', function ($api) {
+  $api->group([
     'prefix' => '/v1',
-    'namespace' => 'Api\V1'], function () {
-
-        // Requisited Routes
-        Route::get('/posts', 'PostsController@index');
-        Route::get('/posts/{id}', 'PostsController@show');
-        Route::post('/posts', 'PostsController@store');
+    'namespace' => '\App\Http\Controllers\Api\V1'], function ($api) {
       
+      $api->get('/posts', 'PostsController@index');
+      $api->get('/posts/{id}', 'PostsController@show');
+      $api->post('/posts', 'PostsController@store');
   });
+});

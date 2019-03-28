@@ -1,71 +1,184 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# APIs de blog em PHP usando MongoDB
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+> Esse projeto tem como finalidade as seguintes ações:
 
-## About Laravel
+1. Exibir uma lista de posts, autores e seus comentários.
+2. Exibir um único post sendo identificado pelo seu ID, autor e os comentários do post.
+3. Criar um novo post
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Pré-requisitos
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Para executar esse projeto algumas tecnologias precisam já está instalada na sua máquina, são elas:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* MongoDB
+* Composer
+* PHP 7.2.16
+* Laravel Framework para acesso aos dados no MongoDB
 
-## Learning Laravel
+## Instalação e Configuração
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost you and your team's skills by digging into our comprehensive video library.
+### Clonando o projeto
 
-## Laravel Sponsors
+```bash
+$ git clone https://github.com/dejaneves/api-blog-php.git
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Instalando as Dependêcias
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
+Após baixar o projeto entre na pasta `api-blog-php`.
 
-## Contributing
+```bash
+$ cd api-blog-php
+```
+e execute o sequinte comando, para instalar as dependências.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+$ composer install
+```
 
-## Security Vulnerabilities
+### Configurando sua base de dados
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Vá para o arquivo que se encontra em `config/database.php` na seção *connections* e altera as configurações do **mongodb** de acordo com as configuraçõs locais do seu banco.
 
-## License
+```php
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+'mongodb' => [
+  'driver'   => 'mongodb',
+  'host'     => env('DB_HOST', '127.0.0.1'),
+  'port'     => env('DB_PORT', 27017),
+  'database' => env('DB_DATABASE', 'blog'),
+  'username' => env('DB_USERNAME'),
+  'password' => env('DB_PASSWORD'),
+  'options' => [
+      'db' => 'admin' // Sets the authentication database required by mongo 3
+  ]
+],
+```
+
+As collections da sua base de dados devem ser: `posts`, `comments` e `users`. Você pode encontrar os dados dentro do diretório `database/data`.
+
+### Executando o Projeto
+
+```bash
+$ php artisan serve
+```
+
+## Rotas *(end-points)*
+
+Todas as rotas criadas para o projeto se encontram no diretório `routes/api.php`.
+
+#### Exibir todos os posts.
+
+```http
+GET:
+
+http://localhost:8000/api/v1/posts
+```
+
+#### Exibir um post passando como paramentro seu {ID}.
+```http
+GET:
+
+http://localhost:8000/api/v1/posts/:id
+```
+
+#### Criar um novo post.
+
+```http
+POST:
+
+http://localhost:8000/api/v1/posts
+```
+
+Exemplo:
+
+Cria um novo post passando um autor que já existe no banco de dados.
+
+```javascript
+
+{
+  "title": "Lorem ipsum dolor sit amet.",
+  "body": "Quisque at tristique sem. Vestibulum a pellentesque metus.",
+  
+  // ID do autor cadastrado no seu banco de dados
+  "author_id" : 10
+}
+```
+
+Cria um novo post, mas adicionando um novo autor.
+
+```javascript
+
+{
+  "title": "Lorem ipsum dolor sit amet.",
+  "body": "Quisque at tristique sem. Vestibulum a pellentesque metus.",
+
+  // Dados do novo autor
+  "author_name":"Jaime Neves",
+  "author_username":"jaimeneves",
+  "author_email":"jaime@gmail.com",
+  "author_phone":"92 981255658",
+  "author_website":"jaimeneves.com.br"
+}
+```
+
+Na hora de inserir um novo post o método checa se existe uma *key* chamada **author_id** se ela for encontrada no corpo da requisição, o método não checa os outros dados do autor e pega o valor dessa *key* como sendo o próprio autor do post.
+
+## Infra
+
+<img src="documentation/infra.png">
+
+### APIs e Loading Balance
+
+Teremos um **Loading Balance** recebendo requisições HTTP e distribuindo as requisições via **NGINX** para um pool escalável de máquinas.
+
+Nossa API pode ser colocada em produção, rodando em 2 máquinas ou mais, como mostrado na figura acima. Quando nosso Loading Balance receber as requisições ele pode buscar em 2 endereços (máquinas), para melhorar a latência e balancear a carga.
+
+Nosso trigger para autoscaling será utilização de CPU, que através de ferramentas podemos obter diversas informações dos recursos que estão sendo utilizados, e com isso tomar alguma ação, como por exemplo: Criar  alarmes que serão ativados quando a utilização de CPU chegar em determinado percentual.
+
+### Banco de dados
+
+Nossas APIs se comportando como um microservice, cada uma terá que ter seu prórpio banco de dados.
+
+Nosso banco de dados também pode ser colocado em uma máquina separada, e fazer sua propria réplica caso seja necessário.
+
+## Boas Práticas de Desenvolvimento
+
+O projeto usa o padrão de arquitetura MVC.
+
+Para todos os Endpoints da API decidir usar o prefix `/api/v1` para fazer seu versionamento.
+
+Por exemplo:
+
+Todos os controllers da API ficam do diretório `Http/Controllers/Api/V1` para todos os controllers que pertencem a versão `v1`.
+
+Se for preciso criar uma outra versão da API sem depreciar em primeiro momento a `v1`, podemos criar todos os controllers em `Http/Controllers/Api/V2` para uma segunda versão, e assim sucessivamente pra outras versões.
+
+### Idioma
+
+O idioma escolhido para o projeto, foi o inglês, pra seguirmos os mesmo padrão de respostas do JSON Place Holder.
+
+
+| Item  | valor |
+| ------------- | ------------- |
+| MongoDB  | Collections e nomes de seus fields  |
+| Codificação  | Classes métodos, atributos e variáveis  |
+| Git  | Mensagens de commits  |
+
+### Codificação
+
+| Item  | valor |
+| ------------- | ------------- |
+| Indentação  | Tamanho 2  |
+| Comprimento Linha  | 100 caracteres  |
+| Número Linha de Arquivo  | 500 linhas  |
+
+Pequenos comentários para identificar o objetivo de uma classe, método ou variável.
+
+## Tecnologias e Ferramanetas Usadas
+
+* MongoDB
+* PHP 7.2.16
+* Laravel Framework
+* Composer
