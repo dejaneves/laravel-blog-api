@@ -182,3 +182,5 @@ Pequenos comentários para identificar o objetivo de uma classe, método ou vari
 * PHP 7.2.16
 * Laravel Framework
 * Composer
+* [Status Codes, Errors e Mensagens](https://github.com/dingo/api)
+* [Driver para MongoDB](https://github.com/jenssegers/laravel-mongodb)
