@@ -131,7 +131,7 @@ Na hora de inserir um novo post o método checa se existe uma *key* chamada **au
 
 ### APIs e Loading Balance
 
-Teremos um **Loading Balance** recebendo requisições HTTP e distribuindo as requisições via **NGINX** para um pool escalável de máquinas.
+Teremos um **Loading Balance** recebendo requisições HTTP e distribuindo as requisições via **NGINX** para um pool escalável de máquinas, onde estarão nossas APIs rodando como microservices.
 
 Nossa API pode ser colocada em produção, rodando em 2 máquinas ou mais, como mostrado na figura acima. Quando nosso Loading Balance receber as requisições ele pode buscar em 2 endereços (máquinas), para melhorar a latência e balancear a carga.
 
@@ -139,7 +139,7 @@ Nosso trigger para autoscaling será utilização de CPU, que através de ferram
 
 ### Banco de dados
 
-Nossas APIs se comportando como um microservice, cada uma terá que ter seu prórpio banco de dados.
+Nossas APIs se comportando como microservices, então cada uma terá que ter seu prórpio banco de dados.
 
 Nosso banco de dados também pode ser colocado em uma máquina separada, e fazer sua propria réplica caso seja necessário.
 
@@ -151,9 +151,9 @@ Para todos os Endpoints da API decidir usar o prefix `/api/v1` para fazer seu ve
 
 Por exemplo:
 
-Todos os controllers da API ficam do diretório `Http/Controllers/Api/V1` para todos os controllers que pertencem a versão `v1`.
+Todos os controllers que pertencem a versão `v1` da API ficam no diretório `App/Http/Controllers/Api/V1`.
 
-Se for preciso criar uma outra versão da API sem depreciar em primeiro momento a `v1`, podemos criar todos os controllers em `Http/Controllers/Api/V2` para uma segunda versão, e assim sucessivamente pra outras versões.
+Se for preciso criar uma outra versão da API sem depreciar em primeiro momento a `v1`, podemos criar todos os controllers em `App/Http/Controllers/Api/V2` para uma versão `v2`, e assim sucessivamente pra outras versões.
 
 ### Idioma
 
@@ -182,3 +182,5 @@ Pequenos comentários para identificar o objetivo de uma classe, método ou vari
 * PHP 7.2.16
 * Laravel Framework
 * Composer
+* [Status Codes, Errors e Mensagens](https://github.com/dingo/api)
+* [Driver para MongoDB](https://github.com/jenssegers/laravel-mongodb)
