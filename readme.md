@@ -6,6 +6,28 @@
 2. Exibir um único post sendo identificado pelo seu ID, autor e os comentários do post.
 3. Criar um novo post
 
+## Tabela de Conteúdos
+
+- [APIs de blog em PHP usando MongoDB](#apis-de-blog-em-php-usando-mongodb)
+  * [Pré-requisitos](#pr--requisitos)
+  * [Instalação e Configuração](#instala--o-e-configura--o)
+    + [Clonando o projeto](#clonando-o-projeto)
+    + [Instalando as Dependêcias](#instalando-as-depend-cias)
+    + [Configurando sua base de dados](#configurando-sua-base-de-dados)
+    + [Executando o Projeto](#executando-o-projeto)
+  * [Rotas *(end-points)*](#rotas---end-points--)
+    + [Exibir todos os posts.](#exibir-todos-os-posts)
+    + [Exibir um post passando como paramentro seu {ID}.](#exibir-um-post-passando-como-paramentro-seu--id-)
+    + [Criar um novo post.](#criar-um-novo-post)
+      - [Exemplo:](#exemplo-)
+  * [Infra](#infra)
+    + [APIs e Loading Balance](#apis-e-loading-balance)
+    + [Banco de dados](#banco-de-dados)
+  * [Boas Práticas de Desenvolvimento](#boas-pr-ticas-de-desenvolvimento)
+    + [Idioma](#idioma)
+    + [Codificação](#codifica--o)
+  * [Tecnologias e Ferramanetas Usadas](#tecnologias-e-ferramanetas-usadas)
+
 ## Pré-requisitos
 
 Para executar esse projeto algumas tecnologias precisam já está instalada na sua máquina, são elas:
@@ -16,7 +38,6 @@ Para executar esse projeto algumas tecnologias precisam já está instalada na s
 * Laravel Framework para acesso aos dados no MongoDB
 
 ## Instalação e Configuração
-
 
 ### Clonando o projeto
 
@@ -68,7 +89,7 @@ $ php artisan serve
 
 Todas as rotas criadas para o projeto se encontram no diretório `routes/api.php`.
 
-#### Exibir todos os posts.
+### Exibir todos os posts.
 
 ```http
 GET:
@@ -76,14 +97,14 @@ GET:
 http://localhost:8000/api/v1/posts
 ```
 
-#### Exibir um post passando como paramentro seu {ID}.
+### Exibir um post passando como paramentro seu {ID}.
 ```http
 GET:
 
 http://localhost:8000/api/v1/posts/:id
 ```
 
-#### Criar um novo post.
+### Criar um novo post.
 
 ```http
 POST:
@@ -91,7 +112,7 @@ POST:
 http://localhost:8000/api/v1/posts
 ```
 
-Exemplo:
+#### Exemplo:
 
 Cria um novo post passando um autor que já existe no banco de dados.
 
