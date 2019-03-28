@@ -151,9 +151,9 @@ Para todos os Endpoints da API decidir usar o prefix `/api/v1` para fazer seu ve
 
 Por exemplo:
 
-Todos os controllers que pertencem a versão `v1` da API ficam no diretório `Http/Controllers/Api/V1`.
+Todos os controllers que pertencem a versão `v1` da API ficam no diretório `App/Http/Controllers/Api/V1`.
 
-Se for preciso criar uma outra versão da API sem depreciar em primeiro momento a `v1`, podemos criar todos os controllers em `Http/Controllers/Api/V2` para uma versão `v2`, e assim sucessivamente pra outras versões.
+Se for preciso criar uma outra versão da API sem depreciar em primeiro momento a `v1`, podemos criar todos os controllers em `App/Http/Controllers/Api/V2` para uma versão `v2`, e assim sucessivamente pra outras versões.
 
 ### Idioma
 
