@@ -6,42 +6,7 @@
 2. Exibir um único post sendo identificado pelo seu ID, autor e os comentários do post.
 3. Criar um novo post
 
-Existem duas maneiras de executar o projeto, são elas:
 
-1. [Executando o projeto com o Docker](docker.md)
-2. [Instalando as ferramentas manualmente](#pré-requisitos)
-
-## Tabela de Conteúdos
-
-- [APIs de blog em PHP usando MongoDB](#apis-de-blog-em-php-usando-mongodb)
-  * [Pré-requisitos](#pré-requisitos)
-  * [Instalação e Configuração](#instalação-e-configuração)
-    + [Clonando o projeto](#clonando-o-projeto)
-    + [Instalando as Dependêcias](#instalando-as-dependêcias)
-    + [Configurando sua base de dados](#configurando-sua-base-de-dados)
-    + [Executando o Projeto](#executando-o-projeto)
-  * [Rotas *(end-points)*](#rotas-end-points)
-    + [Exibir todos os posts.](#exibir-todos-os-posts)
-    + [Exibir um post passando como paramentro seu {ID}.](#exibir-um-post-passando-como-paramentro-seu-id)
-    + [Criar um novo post.](#criar-um-novo-post)
-      - [Exemplo:](#exemplo)
-  * [Infra](#infra)
-    + [APIs e Loading Balance](#apis-e-loading-balance)
-    + [Banco de dados](#banco-de-dados)
-  * [Boas Práticas de Desenvolvimento](#boas-práticas-de-desenvolvimento)
-    + [Idioma](#idioma)
-    + [Codificação](#codificação)
-  * [Tecnologias e Ferramanetas Usadas](#tecnologias-e-ferramanetas-usadas)
-
-## Pré-requisitos
-
-Para executar esse projeto algumas tecnologias precisam já está instalada na sua máquina, são elas:
-
-* MongoDB
-* Composer
-* PHP 7.2.16
-* Laravel Framework
-  + Para acesso aos dados no MongoDB.
 
 ## Instalação e Configuração
 
@@ -64,32 +29,20 @@ e execute o sequinte comando, para instalar as dependências.
 $ composer install
 ```
 
-### Configurando sua base de dados
-
-Vá para o arquivo que se encontra em `config/database.php` na seção *connections* e altera as configurações do **mongodb** de acordo com as configuraçõs locais do seu banco.
-
-```php
-
-'mongodb' => [
-  'driver'   => 'mongodb',
-  'host'     => env('DB_HOST', '127.0.0.1'),
-  'port'     => env('DB_PORT', 27017),
-  'database' => env('DB_DATABASE', 'blog'),
-  'username' => env('DB_USERNAME'),
-  'password' => env('DB_PASSWORD'),
-  'options' => [
-      'db' => 'admin' // Sets the authentication database required by mongo 3
-  ]
-],
-```
-
-As collections da sua base de dados devem ser: `posts`, `comments` e `users`. Você pode encontrar os dados dentro do diretório `database/data`.
-
 ### Executando o Projeto
 
 ```bash
-$ php artisan serve
+$ docker-compose up -d
 ```
+
+**Importante**
+Se o docker da sua máquina estiver para o usuário *root* não esqueça de acrescentar o comando *sudo* : 
+
+Exemplo:
+
+`sudo docker-compose up -d`
+
+OBS.: a opção `-d` é para aplicação rodar em background.
 
 ## Rotas *(end-points)*
 
