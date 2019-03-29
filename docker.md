@@ -6,7 +6,10 @@
 2. Exibir um único post sendo identificado pelo seu ID, autor e os comentários do post.
 3. Criar um novo post
 
+## Pré-requisitos
 
+* [Composer](https://getcomposer.org/download/)
+* [Docker](https://docs.docker.com/)
 
 ## Instalação e Configuração
 
