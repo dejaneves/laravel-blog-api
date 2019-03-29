@@ -6,9 +6,9 @@
 2. Exibir um único post sendo identificado pelo seu ID, autor e os comentários do post.
 3. Criar um novo post
 
-## Pré-requisitos
+[Voltar para Home Principal](readme.md)
 
-* [Composer](https://getcomposer.org/download/)
+## Pré-requisitos
 * [Docker](https://docs.docker.com/)
 
 ## Instalação e Configuração
@@ -103,3 +103,4 @@ Cria um novo post, mas adicionando um novo autor.
 
 Na hora de inserir um novo post o método checa se existe uma *key* chamada **author_id** se ela for encontrada no corpo da requisição, o método não checa os outros dados do autor e pega o valor dessa *key* como sendo o próprio autor do post.
 
+[Voltar para Home Principal](readme.md)
