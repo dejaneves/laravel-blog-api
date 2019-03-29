@@ -68,8 +68,6 @@ $ composer install
 
 Vá para o arquivo que se encontra em `config/database.php` na seção *connections* e altera as configurações do **mongodb** de acordo com as configuraçõs locais do seu banco.
 
-Abra o arquivo `.env` e altere a variável `DB_HOST=mongodb` para `DB_HOST=127.0.0.1`.
-
 ```php
 
 'mongodb' => [
@@ -84,6 +82,7 @@ Abra o arquivo `.env` e altere a variável `DB_HOST=mongodb` para `DB_HOST=127.0
   ]
 ],
 ```
+Abra o arquivo `.env` e altere a variável `DB_HOST=mongodb` para `DB_HOST=127.0.0.1`.
 
 As collections da sua base de dados devem ser: `posts`, `comments` e `users`. Você pode encontrar os dados dentro do diretório `database/data`.
 

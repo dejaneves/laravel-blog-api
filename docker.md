@@ -26,7 +26,7 @@ Após baixar o projeto entre na pasta `api-blog-php`.
 ```bash
 $ cd api-blog-php
 ```
-abra o arquivo `.env` e verifique se a variável *DB_HOST*, deixe assim: `DB_HOST=mongodb`. 
+abra o arquivo `.env` e verifique a variável *DB_HOST*, deixe assim: `DB_HOST=mongodb`. 
 
 
 ```bash
