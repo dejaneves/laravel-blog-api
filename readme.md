@@ -6,6 +6,11 @@
 2. Exibir um único post sendo identificado pelo seu ID, autor e os comentários do post.
 3. Criar um novo post
 
+Existem duas maneiras de executar o projeto, são elas:
+
+1. [Executando o projeto com o Docker](docker.md)
+2. [Instalando as ferramentas manualmente](#pré-requisitos)
+
 ## Tabela de Conteúdos
 
 - [APIs de blog em PHP usando MongoDB](#apis-de-blog-em-php-usando-mongodb)
@@ -62,6 +67,8 @@ $ composer install
 ### Configurando sua base de dados
 
 Vá para o arquivo que se encontra em `config/database.php` na seção *connections* e altera as configurações do **mongodb** de acordo com as configuraçõs locais do seu banco.
+
+Abra o arquivo `.env` e altere a variável `DB_HOST=mongodb` para `DB_HOST=127.0.0.1`.
 
 ```php
 
