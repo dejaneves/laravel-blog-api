@@ -16,7 +16,7 @@
 ### Clonando o projeto
 
 ```bash
-$ git clone https://github.com/dejaneves/api-blog-php.git
+$ git clone https://github.com/dejaneves/laravel-blog-api.git
 ```
 
 ### Executando o Projeto
