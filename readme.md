@@ -1,4 +1,6 @@
-# APIs de blog em PHP usando MongoDB
+# Laravel Blog API using MongoDB 
+
+This project uses the [JSON Place Holder](https://jsonplaceholder.typicode.com/) data.
 
 > Esse projeto tem como finalidade as seguintes ações:
 
