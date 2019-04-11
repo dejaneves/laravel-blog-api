@@ -48,7 +48,7 @@ Para executar esse projeto algumas tecnologias precisam já está instalada na s
 ### Clonando o projeto
 
 ```bash
-$ git clone https://github.com/dejaneves/api-blog-php.git
+$ git clone https://github.com/dejaneves/laravel-blog-api.git
 ```
 
 ### Instalando as Dependêcias
