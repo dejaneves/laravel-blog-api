@@ -1,12 +1,12 @@
 version: '3'
 services:
 
-  #PHP Service
+  # PHP Service
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    image: digitalocean.com/php
+    image: laravel-blog
     container_name: app
     restart: unless-stopped
     tty: true
@@ -20,7 +20,7 @@ services:
     networks:
       - app-network
 
-  #Nginx Service
+  # Nginx Service
   webserver:
     image: nginx:alpine
     container_name: webserver
@@ -36,33 +36,40 @@ services:
       - app-network
 
   mongodb:
-    container_name: mongodb
     image: mongo
+    container_name: mongodb
     ports:
       - 27017:27017
     networks:
       - app-network
   
-  mongo_seed_users:
-    build: ./mongo-seed/users
+  mongo_seed:
+    build: ./mongo-seed/data
     links:
       - mongodb
     networks:
       - app-network
+
+  # mongo_seed_users:
+  #   build: ./mongo-seed/users
+  #   links:
+  #     - mongodb
+  #   networks:
+  #     - app-network
   
-  mongo_seed_posts:
-    build: ./mongo-seed/posts
-    links:
-      - mongodb
-    networks:
-      - app-network
+  # mongo_seed_posts:
+  #   build: ./mongo-seed/posts
+  #   links:
+  #     - mongodb
+  #   networks:
+  #     - app-network
   
-  mongo_seed_comments:
-    build: ./mongo-seed/comments
-    links:
-      - mongodb
-    networks:
-      - app-network
+  # mongo_seed_comments:
+  #   build: ./mongo-seed/comments
+  #   links:
+  #     - mongodb
+  #   networks:
+  #     - app-network
 
 #Docker Networks
 networks:
