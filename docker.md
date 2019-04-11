@@ -1,4 +1,4 @@
-# APIs de blog em PHP usando MongoDB
+# Laravel Blog API using MongoDB 
 
 > Esse projeto tem como finalidade as seguintes ações:
 
